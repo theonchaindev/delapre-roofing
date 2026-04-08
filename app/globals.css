@@ -1,16 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-gold-300: #E8D5A3;
   --color-gold-400: #D4AF5A;
   --color-gold-500: #C9A84C;
-  --color-gold-600: #B8960A;
-  --color-gold-700: #9A7D08;
+  --color-gold-600: #A88620;
   --color-dark-900: #0A0A0A;
   --color-dark-800: #111111;
   --color-dark-700: #1A1A1A;
-  --color-dark-600: #222222;
-  --color-dark-500: #2A2A2A;
+  --color-dark-600: #252525;
+  --color-dark-500: #333333;
 }
 
 html {
@@ -20,16 +18,15 @@ html {
 body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #0A0A0A;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0a0a0a;
 }
 
-/* Page transition */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .page-enter {
-  animation: fadeIn 0.5s ease forwards;
+  animation: fadeIn 0.4s ease forwards;
 }

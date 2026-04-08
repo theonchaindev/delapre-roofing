@@ -73,21 +73,21 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
       </section>
 
       {/* ─── OVERVIEW ──────────────────────────────────────────── */}
-      <section className="py-20 bg-dark-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Description */}
             <div className="lg:col-span-2">
               <Reveal>
-                <p className="text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4">Overview</p>
+                <p className="text-gold-600 text-xs font-semibold uppercase tracking-widest mb-4">Overview</p>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="text-neutral-300 text-lg leading-relaxed mb-6">{project.longDesc}</p>
+                <p className="text-neutral-600 text-lg leading-relaxed mb-6">{project.longDesc}</p>
               </Reveal>
               <Reveal delay={0.15}>
-                <div className="bg-dark-800 border border-dark-600 rounded-2xl p-6">
-                  <h3 className="text-sm font-semibold text-white mb-3">Scope of Works</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">{project.scope}</p>
+                <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-6">
+                  <h3 className="text-sm font-semibold text-neutral-900 mb-3">Scope of Works</h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">{project.scope}</p>
                 </div>
               </Reveal>
             </div>
@@ -96,11 +96,11 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
             <div className="space-y-5">
               {/* Services */}
               <Reveal delay={0.1}>
-                <div className="bg-dark-800 border border-dark-600 rounded-2xl p-5">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-3">Services</h3>
+                <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">Services</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.services.map((s) => (
-                      <span key={s} className="text-xs text-gold-400 bg-gold-500/5 border border-gold-500/10 px-2.5 py-1 rounded-full">
+                      <span key={s} className="text-xs text-gold-600 bg-gold-500/5 border border-gold-400/20 px-2.5 py-1 rounded-full font-medium">
                         {s}
                       </span>
                     ))}
@@ -110,12 +110,12 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
               {/* Materials */}
               <Reveal delay={0.15}>
-                <div className="bg-dark-800 border border-dark-600 rounded-2xl p-5">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-3">Materials Used</h3>
+                <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">Materials Used</h3>
                   <ul className="space-y-2">
                     {project.materials.map((m) => (
-                      <li key={m} className="flex items-center gap-2 text-sm text-neutral-400">
-                        <div className="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0" />
+                      <li key={m} className="flex items-center gap-2 text-sm text-neutral-600">
+                        <div className="w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
                         {m}
                       </li>
                     ))}
@@ -125,9 +125,9 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
               {/* Outcome */}
               <Reveal delay={0.2}>
-                <div className="bg-gold-500/5 border border-gold-500/20 rounded-2xl p-5">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-gold-400/70 mb-3">Outcome</h3>
-                  <p className="text-sm text-neutral-300 leading-relaxed">{project.outcome}</p>
+                <div className="bg-gold-500/5 border border-gold-400/20 rounded-2xl p-5">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-gold-600 mb-3">Outcome</h3>
+                  <p className="text-sm text-neutral-700 leading-relaxed">{project.outcome}</p>
                 </div>
               </Reveal>
             </div>
@@ -137,10 +137,10 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
       {/* ─── GALLERY ───────────────────────────────────────────── */}
       {project.gallery.length > 1 && (
-        <section className="pb-20 bg-dark-900">
+        <section className="pb-20 bg-white border-t border-neutral-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
             <Reveal>
-              <p className="text-gold-400 text-xs font-semibold uppercase tracking-widest mb-8">Gallery</p>
+              <p className="text-gold-600 text-xs font-semibold uppercase tracking-widest mb-8">Gallery</p>
             </Reveal>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {project.gallery.map((img, i) => (
@@ -161,20 +161,20 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
       )}
 
       {/* ─── RELATED PROJECTS ──────────────────────────────────── */}
-      <section className="py-20 bg-dark-800 border-t border-dark-600">
+      <section className="py-20 bg-neutral-50 border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal>
-            <p className="text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4">More Projects</p>
+            <p className="text-gold-600 text-xs font-semibold uppercase tracking-widest mb-4">More Projects</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-3xl font-bold tracking-tight mb-10">Related work</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 mb-10">Related work</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5">
             {related.map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08}>
                 <Link
                   href={`/projects/${p.slug}`}
-                  className="group block bg-dark-900 border border-dark-600 hover:border-gold-500/30 rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
+                  className="group block bg-white border border-neutral-200 hover:border-gold-400 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
                 >
                   <div className="relative h-44 overflow-hidden">
                     <Image
@@ -183,11 +183,11 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
                   <div className="p-5">
-                    <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-gold-400 transition-colors">{p.name}</h3>
-                    <p className="text-xs text-neutral-500">{p.location}</p>
+                    <h3 className="font-semibold text-neutral-900 text-sm mb-1 group-hover:text-gold-600 transition-colors">{p.name}</h3>
+                    <p className="text-xs text-neutral-400">{p.location}</p>
                   </div>
                 </Link>
               </Reveal>
@@ -197,20 +197,18 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-dark-900 border-t border-dark-600">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <section className="py-20 bg-dark-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <Reveal>
-            <h2 className="text-4xl font-bold tracking-tight mb-4">Start your project</h2>
+            <div>
+              <h2 className="text-3xl font-bold text-white tracking-tight mb-2">Start your project</h2>
+              <p className="text-neutral-400">Let&apos;s discuss how we can deliver the same quality on your build.</p>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-neutral-400 mb-8 max-w-md mx-auto">
-              Get in touch and let's discuss how we can deliver the same quality on your build.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-7 py-3.5 rounded-lg transition-all hover:scale-105 active:scale-95"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-all hover:scale-105 whitespace-nowrap"
             >
               Get a Quote
             </Link>

@@ -46,19 +46,18 @@ export default function ServicesPage() {
   return (
     <div className="page-enter">
       {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section className="relative pt-40 pb-24 bg-dark-900 overflow-hidden">
-        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-gold-500/4 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="relative pt-44 pb-28 bg-dark-900 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4">Our Services</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6 max-w-3xl">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6 max-w-3xl text-white">
               Roofing built around your project
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="text-neutral-400 text-lg max-w-2xl leading-relaxed">
+            <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
               From the first tile to final sign-off, we provide complete roofing services for new builds and refurbishments of all scales — residential, commercial, and industrial.
             </p>
           </Reveal>
@@ -72,7 +71,7 @@ export default function ServicesPage() {
           return (
             <section
               key={s.title}
-              className={`py-24 ${isEven ? "bg-dark-900" : "bg-dark-800"}`}
+              className={`py-24 ${isEven ? "bg-white" : "bg-neutral-50"} border-b border-neutral-100`}
             >
               <div className="max-w-7xl mx-auto px-6 lg:px-10">
                 <div
@@ -90,31 +89,31 @@ export default function ServicesPage() {
                         height={500}
                         className="w-full h-[400px] object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                     </div>
                   </Reveal>
 
                   {/* Content */}
                   <div className={!isEven ? "lg:pr-12" : ""}>
                     <Reveal>
-                      <span className="inline-block text-xs text-gold-400 font-semibold uppercase tracking-widest mb-3">
+                      <span className="inline-block text-xs text-gold-600 font-semibold uppercase tracking-widest mb-3">
                         0{i + 1}
                       </span>
                     </Reveal>
                     <Reveal delay={0.05}>
-                      <h2 className="text-4xl font-bold tracking-tight mb-2">{s.title}</h2>
+                      <h2 className="text-4xl font-bold tracking-tight text-neutral-900 mb-2">{s.title}</h2>
                     </Reveal>
                     <Reveal delay={0.1}>
-                      <p className="text-gold-400/70 text-sm mb-5">{s.tagline}</p>
+                      <p className="text-gold-600 text-sm font-medium mb-5">{s.tagline}</p>
                     </Reveal>
                     <Reveal delay={0.15}>
-                      <p className="text-neutral-400 leading-relaxed mb-8">{s.desc}</p>
+                      <p className="text-neutral-600 leading-relaxed mb-8">{s.desc}</p>
                     </Reveal>
                     <Reveal delay={0.2}>
                       <div className="grid grid-cols-2 gap-2">
                         {s.options.map((o) => (
-                          <div key={o} className="flex items-center gap-2 text-sm text-neutral-400">
-                            <div className="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0" />
+                          <div key={o} className="flex items-center gap-2 text-sm text-neutral-600">
+                            <div className="w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
                             {o}
                           </div>
                         ))}
@@ -129,21 +128,16 @@ export default function ServicesPage() {
       </div>
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-dark-800 border-t border-dark-600">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <section className="py-24 bg-dark-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <Reveal>
-            <h2 className="text-4xl font-bold tracking-tight mb-6">Not sure which service you need?</h2>
+            <div>
+              <h2 className="text-3xl font-bold text-white tracking-tight mb-2">Not sure which service you need?</h2>
+              <p className="text-neutral-400">Get in touch and our team will advise you on the best solution.</p>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-neutral-400 mb-10 max-w-xl mx-auto">
-              Get in touch and our team will advise you on the best solution for your project.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105 active:scale-95"
-            >
+            <Link href="/contact" className="flex-shrink-0 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
               Schedule a Meeting
             </Link>
           </Reveal>

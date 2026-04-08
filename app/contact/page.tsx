@@ -14,21 +14,20 @@ export default function ContactPage() {
   return (
     <div className="page-enter">
       {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section className="relative pt-40 pb-24 bg-dark-900 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/4 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <section className="relative pt-44 pb-28 bg-dark-900 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
           <Reveal>
             <p className="text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4">Get in Touch</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6 text-white">
               Let&apos;s talk about
               <br />
               <span className="text-gold-400">your project</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="text-neutral-400 text-lg max-w-xl mx-auto leading-relaxed">
+            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
               For professional and reliable roofing services, contact us today. Our team will get back to you promptly.
             </p>
           </Reveal>
@@ -36,13 +35,13 @@ export default function ContactPage() {
       </section>
 
       {/* ─── CONTACT CONTENT ───────────────────────────────────── */}
-      <section className="py-20 bg-dark-900">
+      <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Left — details */}
             <div className="lg:col-span-2">
               <Reveal>
-                <h2 className="text-2xl font-bold tracking-tight mb-8">Contact Details</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-neutral-900 mb-8">Contact Details</h2>
               </Reveal>
 
               <div className="space-y-6">
@@ -81,17 +80,17 @@ export default function ContactPage() {
                 ].map((item, i) => (
                   <Reveal key={item.label} delay={i * 0.1}>
                     <div className="flex items-start gap-4 group">
-                      <div className="w-11 h-11 bg-dark-700 border border-dark-600 group-hover:border-gold-500/30 text-gold-400 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                      <div className="w-11 h-11 bg-white border border-neutral-200 group-hover:border-gold-400 text-gold-600 rounded-xl shadow-sm flex items-center justify-center flex-shrink-0 transition-colors">
                         {item.icon}
                       </div>
                       <div className="pt-1">
                         <div className="text-xs text-neutral-600 mb-0.5 uppercase tracking-wider">{item.label}</div>
                         {item.href ? (
-                          <a href={item.href} className="text-sm text-neutral-300 hover:text-gold-400 transition-colors font-medium">
+                          <a href={item.href} className="text-sm text-neutral-700 hover:text-gold-600 transition-colors font-medium">
                             {item.value}
                           </a>
                         ) : (
-                          <span className="text-sm text-neutral-300 font-medium">{item.value}</span>
+                          <span className="text-sm text-neutral-700 font-medium">{item.value}</span>
                         )}
                       </div>
                     </div>
@@ -101,7 +100,7 @@ export default function ContactPage() {
 
               {/* Social */}
               <Reveal delay={0.35}>
-                <div className="mt-10 pt-8 border-t border-dark-600">
+                <div className="mt-10 pt-8 border-t border-neutral-200">
                   <p className="text-xs text-neutral-600 uppercase tracking-wider mb-4">Follow Us</p>
                   <div className="flex gap-3">
                     {[
@@ -114,7 +113,7 @@ export default function ContactPage() {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-9 h-9 bg-dark-700 border border-dark-600 hover:border-gold-500/30 text-neutral-500 hover:text-gold-400 rounded-lg flex items-center justify-center transition-all"
+                        className="w-9 h-9 bg-white border border-neutral-200 hover:border-gold-400 text-neutral-500 hover:text-gold-600 rounded-lg flex items-center justify-center transition-all"
                         aria-label={s.label}
                       >
                         {s.icon}
@@ -128,15 +127,15 @@ export default function ContactPage() {
             {/* Right — form */}
             <div className="lg:col-span-3">
               <Reveal delay={0.1}>
-                <div className="bg-dark-800 border border-dark-600 rounded-2xl p-8">
+                <div className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm">
                   {submitted ? (
                     <div className="text-center py-12">
                       <div className="w-16 h-16 bg-gold-500/10 border border-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
-                        <svg className="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-7 h-7 text-gold-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="text-xl font-bold mb-2">Message sent</h3>
+                      <h3 className="text-xl font-bold text-neutral-900 mb-2">Message sent</h3>
                       <p className="text-neutral-400 text-sm">We'll get back to you as soon as possible.</p>
                     </div>
                   ) : (
@@ -150,7 +149,7 @@ export default function ContactPage() {
                               type="text"
                               placeholder="John"
                               required
-                              className="w-full bg-dark-900 border border-dark-500 focus:border-gold-500/50 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none transition-colors"
+                              className="w-full bg-neutral-50 border border-neutral-200 focus:border-gold-400 rounded-lg px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none transition-colors"
                             />
                           </div>
                           <div>
@@ -159,7 +158,7 @@ export default function ContactPage() {
                               type="text"
                               placeholder="Smith"
                               required
-                              className="w-full bg-dark-900 border border-dark-500 focus:border-gold-500/50 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none transition-colors"
+                              className="w-full bg-neutral-50 border border-neutral-200 focus:border-gold-400 rounded-lg px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none transition-colors"
                             />
                           </div>
                         </div>
@@ -170,7 +169,7 @@ export default function ContactPage() {
                             type="email"
                             placeholder="john@example.com"
                             required
-                            className="w-full bg-dark-900 border border-dark-500 focus:border-gold-500/50 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none transition-colors"
+                            className="w-full bg-neutral-50 border border-neutral-200 focus:border-gold-400 rounded-lg px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none transition-colors"
                           />
                         </div>
 
@@ -179,7 +178,7 @@ export default function ContactPage() {
                           <input
                             type="text"
                             placeholder="Your company (optional)"
-                            className="w-full bg-dark-900 border border-dark-500 focus:border-gold-500/50 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none transition-colors"
+                            className="w-full bg-neutral-50 border border-neutral-200 focus:border-gold-400 rounded-lg px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none transition-colors"
                           />
                         </div>
 
@@ -189,7 +188,7 @@ export default function ContactPage() {
                             rows={5}
                             placeholder="Tell us about your project..."
                             required
-                            className="w-full bg-dark-900 border border-dark-500 focus:border-gold-500/50 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none transition-colors resize-none"
+                            className="w-full bg-neutral-50 border border-neutral-200 focus:border-gold-400 rounded-lg px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none transition-colors resize-none"
                           />
                         </div>
 

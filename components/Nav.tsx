@@ -28,13 +28,16 @@ export default function Nav() {
   useEffect(() => setOpen(false), [pathname]);
 
   const transparent = isHome && !scrolled;
+  const lightNav = !isHome && !transparent;
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         transparent
           ? "bg-transparent"
-          : "bg-dark-900/95 backdrop-blur-md border-b border-dark-600"
+          : lightNav
+            ? "bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-sm"
+            : "bg-dark-900/95 backdrop-blur-md border-b border-dark-600"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-4">
@@ -55,10 +58,10 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm transition-colors ${
+              className={`text-sm font-medium transition-colors ${
                 pathname === l.href
-                  ? "text-gold-400"
-                  : "text-neutral-400 hover:text-white"
+                  ? lightNav ? "text-gold-600" : "text-gold-400"
+                  : lightNav ? "text-neutral-600 hover:text-neutral-900" : "text-neutral-400 hover:text-white"
               }`}
             >
               {l.label}
@@ -69,14 +72,14 @@ export default function Nav() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-dark-900 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
+          className="hidden md:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
         >
           Schedule a Meeting
         </Link>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-neutral-400 hover:text-white transition-colors"
+          className={`md:hidden p-2 transition-colors ${lightNav ? "text-neutral-600 hover:text-neutral-900" : "text-neutral-400 hover:text-white"}`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
