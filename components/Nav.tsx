@@ -1,68 +1,82 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => setScrolled(window.scrollY > 40);
+    handler();
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  useEffect(() => setOpen(false), [pathname]);
+
+  const transparent = isHome && !scrolled;
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transparent
+          ? "bg-transparent"
+          : "bg-dark-900/95 backdrop-blur-md border-b border-dark-600"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <span className="w-7 h-7 rounded bg-red-600 flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 2L2 8h2v10h4v-6h4v6h4V8h2L10 2z" />
-            </svg>
-          </span>
-          <span className="font-semibold text-neutral-900 tracking-tight">Delapre Roofing</span>
-        </a>
+        <Link href="/" className="flex items-center gap-3 group">
+          <Image
+            src="https://cdn.prod.website-files.com/6495714d052e260635f92d73/6495adf8a369ca9b9e409fd2_White%20logo%20-%20no%20background.svg"
+            alt="Delapre Roofing"
+            width={140}
+            height={36}
+            className="h-8 w-auto"
+          />
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+              className={`text-sm transition-colors ${
+                pathname === l.href
+                  ? "text-gold-400"
+                  : "text-neutral-400 hover:text-white"
+              }`}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* CTA */}
-        <a
-          href="tel:+447772123254"
-          className="hidden md:inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+        <Link
+          href="/contact"
+          className="hidden md:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-dark-900 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-          Call Us
-        </a>
+          Schedule a Meeting
+        </Link>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-neutral-600"
+          className="md:hidden p-2 text-neutral-400 hover:text-white transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -78,27 +92,30 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t border-neutral-100 px-6 py-4 flex flex-col gap-4">
+      {/* Mobile drawer */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-dark-800 border-t border-dark-600 ${
+          open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-6 py-6 flex flex-col gap-5">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-sm text-neutral-700 hover:text-neutral-900"
+              className={`text-sm ${pathname === l.href ? "text-gold-400" : "text-neutral-300"}`}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="tel:+447772123254"
-            className="inline-flex items-center gap-2 bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-lg w-fit"
+          <Link
+            href="/contact"
+            className="inline-flex w-fit items-center bg-gold-500 text-dark-900 text-sm font-semibold px-5 py-2.5 rounded-lg"
           >
-            Call Us
-          </a>
+            Schedule a Meeting
+          </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }
