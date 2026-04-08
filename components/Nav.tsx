@@ -43,9 +43,9 @@ export default function Nav() {
           <Image
             src="https://cdn.prod.website-files.com/6495714d052e260635f92d73/6495adf8a369ca9b9e409fd2_White%20logo%20-%20no%20background.svg"
             alt="Delapre Roofing"
-            width={200}
-            height={52}
-            className="h-12 w-auto"
+            width={240}
+            height={64}
+            className="h-16 w-auto"
           />
         </Link>
 

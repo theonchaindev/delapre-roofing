@@ -26,9 +26,9 @@ export default function Footer() {
             <Image
               src="https://cdn.prod.website-files.com/6495714d052e260635f92d73/6495adf8a369ca9b9e409fd2_White%20logo%20-%20no%20background.svg"
               alt="Delapre Roofing"
-              width={140}
-              height={36}
-              className="h-8 w-auto mb-5"
+              width={240}
+            height={64}
+              className="h-16 w-auto mb-5"
             />
             <p className="text-neutral-500 text-sm leading-relaxed max-w-xs">
               The No.1 Roofing Firm. Providing superior roofing solutions for new builds across Northamptonshire and beyond.
