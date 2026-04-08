@@ -1,70 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
-
-const projects = [
-  {
-    name: "Project Henlow",
-    location: "Henlow, Bedfordshire",
-    type: "New Build",
-    services: ["Roofing", "Window Installation"],
-    duration: "2–3 months",
-    desc: "A roofing project with a new window installation, enhancing both the appearance and functionality of the property. Full pitched roof system with integrated VELUX windows and lead detailing throughout.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d66f9f030e4181e582eb8b_DR_P1_02.jpg",
-    featured: true,
-  },
-  {
-    name: "Project Rushden",
-    location: "Rushden, Northamptonshire",
-    type: "New Build",
-    services: ["Property Roofing"],
-    duration: "1–2 months",
-    desc: "A completed roofing project for a new build property, ensuring long-term durability and protection from the elements. Clay tile system with full lead flashings and ridge work.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d6764dec5ec7c14be04350_DR_P3_01.jpg",
-    featured: false,
-  },
-  {
-    name: "Project Corby",
-    location: "Corby, Northamptonshire",
-    type: "New Build",
-    services: ["Roofing", "Solar Integration"],
-    duration: "1–2 months",
-    desc: "Exceptional skills demonstrated in a new build project, seamlessly integrating solar panels within the roofing design to promote sustainability without compromising aesthetics.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d6703ef0bec4b9baa1f0a0_DR_P2_01.jpg",
-    featured: false,
-  },
-  {
-    name: "Project Northampton",
-    location: "Northampton, Northamptonshire",
-    type: "New Build",
-    services: ["Roofing", "Window Installation"],
-    duration: "1–2 months",
-    desc: "A roofing project that also involved installing new windows, improving the property's aesthetics and energy performance. Full system with thermal insulation and airtight detailing.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d676654056998f9a78ba26_DR_P4_01.jpg",
-    featured: false,
-  },
-  {
-    name: "Project Bedfordshire",
-    location: "Bedfordshire",
-    type: "New Build",
-    services: ["Solar Panel Installation"],
-    duration: "1–2 months",
-    desc: "Installed solar panels on a property's roof, promoting sustainability and reducing energy costs. A fully integrated photovoltaic system designed around the existing roof structure.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d6767c9bec4b57edf30ace_DR_P5_01.jpg",
-    featured: false,
-  },
-  {
-    name: "Union View",
-    location: "Northamptonshire, UK",
-    type: "New Build",
-    services: ["Full Roofing Package"],
-    duration: null,
-    desc: "A flagship new build roofing project demonstrating our full capabilities — from structural roof systems to final weatherproofing details. Our most comprehensive project to date.",
-    img: "https://cdn.prod.website-files.com/6495714d052e260635f92f28/65d66f9f030e4181e582eb8b_DR_P1_02.jpg",
-    featured: true,
-  },
-];
+import { projects } from "@/lib/projects";
 
 export default function ProjectsPage() {
   return (
@@ -94,8 +33,11 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.07}>
-                <div className="group bg-dark-800 border border-dark-600 hover:border-gold-500/30 rounded-2xl overflow-hidden transition-all hover:-translate-y-1">
+              <Reveal key={p.slug} delay={i * 0.07}>
+                <Link
+                  href={`/projects/${p.slug}`}
+                  className="group block bg-dark-800 border border-dark-600 hover:border-gold-500/30 rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
+                >
                   {/* Image */}
                   <div className="relative h-56 overflow-hidden">
                     <Image
@@ -110,7 +52,6 @@ export default function ProjectsPage() {
                         Featured
                       </div>
                     )}
-                    {/* Location overlay */}
                     <div className="absolute bottom-3 left-4 flex items-center gap-1.5 text-xs text-white/80">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -123,15 +64,15 @@ export default function ProjectsPage() {
                   {/* Content */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-white">{p.name}</h3>
+                      <h3 className="font-semibold text-white group-hover:text-gold-400 transition-colors">{p.name}</h3>
                       {p.duration && (
                         <span className="text-xs text-neutral-500 border border-dark-500 px-2 py-0.5 rounded-full">
                           {p.duration}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-neutral-500 leading-relaxed mb-4">{p.desc}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p className="text-sm text-neutral-500 leading-relaxed mb-4 line-clamp-2">{p.desc}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {p.services.map((srv) => (
                         <span
                           key={srv}
@@ -141,8 +82,14 @@ export default function ProjectsPage() {
                         </span>
                       ))}
                     </div>
+                    <div className="flex items-center gap-1.5 text-xs text-gold-400 font-medium group-hover:gap-2.5 transition-all">
+                      View project
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -157,16 +104,16 @@ export default function ProjectsPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-neutral-400 mb-10 max-w-xl mx-auto">
-              We'd love to hear about your new build. Get in touch and let's make it happen.
+              We&apos;d love to hear about your new build. Get in touch and let&apos;s make it happen.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105 active:scale-95"
             >
               Get in Touch
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>
